@@ -31,6 +31,9 @@
 .size{
   width: 200px;
 }
+.time-slow-size{
+  width: 400px;
+}
 .select-month{
   background-color: #1c418a;
   border: 1px solid #fff;
@@ -47,6 +50,10 @@
 }
 .activeDays {
   background-color: #436fc7;
+  color: #211010;
+}
+.active-slot{
+  background-color: #59a713;
   color: #211010;
 }
 @keyframes App-logo-spin {
