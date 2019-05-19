@@ -45,6 +45,10 @@
     width: 64%;
     background: #1d418a;
 }
+.activeDays {
+  background-color: #436fc7;
+  color: #211010;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
