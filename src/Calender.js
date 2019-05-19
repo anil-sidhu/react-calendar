@@ -5,7 +5,6 @@ import Time from './Time';
 import { Container, Col, Row, Dropdown } from 'react-bootstrap';
 const date = new Date();
 
-
 class Calender extends React.Component {
   constructor() {
     super()
