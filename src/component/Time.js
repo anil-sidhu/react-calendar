@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from 'moment'
+import { Redirect } from 'react-router'
 import { Container, Col, Row, Dropdown, Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router,withRouter, Route, Link } from "react-router-dom";
 const date = new Date();
 class Calender extends React.Component {
     constructor() {
@@ -16,7 +17,6 @@ class Calender extends React.Component {
         this.setState({ timeSlots: timeStops })
     }
     selectTime(slot) {
-        console.warn("slot", slot)
         this.setState({ selectSlot: slot })
     }
     timeSlots() {
@@ -48,29 +48,30 @@ class Calender extends React.Component {
         }
         return timeStops;
     }
-    booking()
-    {
-        console.warn("state",this.state.selectSlot)
-        this.props.bookingData(this.state.selectSlot)
+    booking() {
+        let data=this.props.data;
+        data.time=this.state.selectSlot;
+        this.props.bookingData(data)
+        this.props.history.push('/Appointments')   
     }
     render() {
-        console.warn("test",this.props.Booking)
         return (
+           
             <div className="App">
-                    <Container className="time-slow-size">
-                        <Row>{this.timeSlots()}</Row>
-                        <ul>
-                            <li>
-                                <Button 
-                                onClick={()=>{this.booking()}}>
+                <Container className="time-slow-size">
+                    <Row>{this.timeSlots()}</Row>
+                    <ul>
+                        <li>
+                            <Button
+                                onClick={() => { this.booking() }}>
                                 Book </Button>
-                                <Link to="/confirm">Confirm</Link>
-                            </li>
-                        </ul>
-                    </Container>
+                            <Link to="/confirm">Confirm</Link>
+                        </li>
+                    </ul>
+                </Container>
             </div>
         );
     }
 }
 
-export default Calender;
+export default withRouter(Calender);

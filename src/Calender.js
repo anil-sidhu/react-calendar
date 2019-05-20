@@ -15,7 +15,8 @@ class Calender extends React.Component {
       currentYear: '2019',
       selectYear: '2019',
       totalDayMonth: 31,
-      selectedDay:undefined
+      selectedDay:undefined,
+      selectedDetails:undefined,
     }
   }
   days(totalDayMonth) {
@@ -32,7 +33,12 @@ class Calender extends React.Component {
   }
   selectDay(item) {
     console.warn("result",this.state.selectedMonth,this.state.selectYear,item)
-    this.setState({selectedDay:item})
+  let data={
+    day:item,
+    month:this.state.selectedMonth,
+    year:this.state.selectYear
+  }
+    this.setState({selectedDay:item,selectedDetails:data})
   }
   componentDidMount() {
     this.setState(
@@ -111,7 +117,7 @@ class Calender extends React.Component {
           </Row>
         </Container>
 
-        {this.state.selectedDay ? <TimeContainer />:null}
+        {this.state.selectedDay ? <TimeContainer data={this.state.selectedDetails}  />:null}
       </div>
     );
   }

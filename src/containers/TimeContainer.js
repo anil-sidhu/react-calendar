@@ -3,7 +3,7 @@ import { bookingData } from '../actions/index'
 import Time from '../component/Time'
  
 const mapStateToProps = state => ({
-  status: state
+ 
 })
  
 const mapDispatchToProps = dispatch => ({

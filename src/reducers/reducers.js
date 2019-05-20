@@ -5,7 +5,7 @@ const reduce = (state = [], action) => {
                 ...state,
                 status: action.data
             }
-            case 'Booking':
+            case 'BOOKING':
             return {
                 ...state,
                 Booking: action.data
