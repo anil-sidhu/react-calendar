@@ -24,7 +24,6 @@ class Appointments extends React.Component {
         }
         else { return false }
     }
-
     render() {
         return (
             <div className="App">
@@ -56,15 +55,12 @@ class Appointments extends React.Component {
                                             <td>Dr Strange</td>
                                             <th> <Button variant="outline-danger">Cancel</Button></th>
                                         </tr>
-
                                     </tbody>
                                 </Table>
                             })
                             : <Jumbotron>
                                 <h1>No Appointments Booked Yet</h1>
-
                                 <Button onClick={() => this.props.history.push('/')} variant="primary">Make First Booking</Button>
-
                             </Jumbotron>
                     }
                 </Container>

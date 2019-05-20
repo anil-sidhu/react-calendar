@@ -5,7 +5,6 @@ export const profile = () => (
   })
 
   export const bookingData = (data) => (dispatch: any) => {
-      console.warn("data",data)
     setTimeout(() => {
           dispatch({ 
             type: "BOOKING",

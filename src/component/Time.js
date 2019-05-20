@@ -31,7 +31,6 @@ class Calender extends React.Component {
         }
         return days;
     }
-
     getTimeStops(start, end) {
         var startTime = moment(start, 'HH:mm');
         var endTime = moment(end, 'HH:mm');

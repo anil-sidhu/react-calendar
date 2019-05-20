@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Col, Row, Dropdown, Button, Jumbotron } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link,withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 class Home extends React.Component {
     constructor() {
         super()
@@ -17,11 +17,10 @@ class Home extends React.Component {
                         <h1>Book An Apointment</h1>
                         <p>
                             Netmeds.com is a trusted Indian online medical store.
-                             Order prescription/OTC medicines online.
-                              on Delivery available
-  </p>
+                             Order prescription medicines online.
+                              on Delivery available</p>
                         <p>
-                            <Button onClick={()=> this.props.history.push('/calender') } variant="primary">Book Now</Button>
+                            <Button onClick={() => this.props.history.push('/calender')} variant="primary">Book Now</Button>
                         </p>
                     </Jumbotron>
                 </Container>

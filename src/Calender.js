@@ -15,8 +15,8 @@ class Calender extends React.Component {
       currentYear: '2019',
       selectYear: '2019',
       totalDayMonth: 31,
-      selectedDay:undefined,
-      selectedDetails:undefined,
+      selectedDay: undefined,
+      selectedDetails: undefined,
     }
   }
   days(totalDayMonth) {
@@ -25,20 +25,19 @@ class Calender extends React.Component {
       days.push(
         <Col key={i}
           onClick={() => { this.selectDay(i) }}
-          className={this.state.selectedDay==i?"activeDays day" :'day'} 
+          className={this.state.selectedDay == i ? "activeDays day" : 'day'}
           sm={1}>{i}</Col>
       );
     }
     return days;
   }
   selectDay(item) {
-    console.warn("result",this.state.selectedMonth,this.state.selectYear,item)
-  let data={
-    day:item,
-    month:this.state.selectedMonth,
-    year:this.state.selectYear
-  }
-    this.setState({selectedDay:item,selectedDetails:data})
+    let data = {
+      day: item,
+      month: this.state.selectedMonth,
+      year: this.state.selectYear
+    }
+    this.setState({ selectedDay: item, selectedDetails: data })
   }
   componentDidMount() {
     this.setState(
@@ -65,18 +64,16 @@ class Calender extends React.Component {
       selectedMonth: this.state.month[this.state.selectedMonthNumber]
     })
     await this.daysInMonth(this.state.selectedMonthNumber)
-  } 
+  }
   async daysInMonth(monthNumber) {
-    console.warn("app",monthNumber)
-    let data =await  new Date(this.state.selectYear, monthNumber+1, 0).getDate();
-    console.warn("data",data)
+    let data = await new Date(this.state.selectYear, monthNumber + 1, 0).getDate();
     await this.setState({ totalDayMonth: data })
   }
   years() {
     const yrs = [];
     for (let i = this.state.currentYear; i <= 2022; i++) {
       yrs.push(
-        <Dropdown.Item 
+        <Dropdown.Item
           key={i}
           onClick={() => { this.selectYear(i) }} className="day" sm={1}>
           {i}
@@ -117,7 +114,7 @@ class Calender extends React.Component {
           </Row>
         </Container>
 
-        {this.state.selectedDay ? <TimeContainer data={this.state.selectedDetails}  />:null}
+        {this.state.selectedDay ? <TimeContainer data={this.state.selectedDetails} /> : null}
       </div>
     );
   }
