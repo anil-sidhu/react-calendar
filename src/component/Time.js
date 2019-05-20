@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment'
 import { Redirect } from 'react-router'
 import { Container, Col, Row, Dropdown, Button } from 'react-bootstrap';
-import { BrowserRouter as Router,withRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, withRouter, Route, Link } from "react-router-dom";
 const date = new Date();
 class Calender extends React.Component {
     constructor() {
@@ -49,25 +49,21 @@ class Calender extends React.Component {
         return timeStops;
     }
     booking() {
-        let data=this.props.data;
-        data.time=this.state.selectSlot;
+        let data = this.props.data;
+        data.time = this.state.selectSlot;
         this.props.bookingData(data)
-        this.props.history.push('/Appointments')   
+        this.props.history.push('/Appointments')
     }
     render() {
         return (
-           
+
             <div className="App">
                 <Container className="time-slow-size">
                     <Row>{this.timeSlots()}</Row>
-                    <ul>
-                        <li>
+                    
                             <Button
                                 onClick={() => { this.booking() }}>
                                 Book </Button>
-                            <Link to="/confirm">Confirm</Link>
-                        </li>
-                    </ul>
                 </Container>
             </div>
         );
