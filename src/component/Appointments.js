@@ -30,11 +30,11 @@ class Appointments extends React.Component {
     // }
     getSnapshotBeforeUpdate(prevProps, prevState) {
 
-        let oldData = localStorage.getItem("ApStorage");
-        let ApStorage = [oldData]
+        let oldData = JSON.parse(localStorage.getItem("ApStorage"));
+        let ApStorage = oldData ? oldData:[]
         ApStorage.push(this.props.bookingData);
-        localStorage.setItem('ApStorage', ApStorage)
-        console.warn("newDATA", ApStorage,oldData)
+        localStorage.setItem('ApStorage', JSON.stringify(ApStorage))
+        console.warn("newDATA",oldData)
 
         return true
     }

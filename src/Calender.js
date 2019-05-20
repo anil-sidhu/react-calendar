@@ -21,7 +21,7 @@ class Calender extends React.Component {
   }
   days(totalDayMonth) {
     const days = [];
-    for (let i = 0; i <= totalDayMonth; i++) {
+    for (let i = 1; i <= totalDayMonth; i++) {
       days.push(
         <Col key={i}
           onClick={() => { this.selectDay(i) }}
