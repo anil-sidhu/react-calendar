@@ -1,12 +1,8 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import moment from 'moment'
-import { Container, Col, Row, Dropdown } from 'react-bootstrap';
+import { Container, Col, Row, Dropdown, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 const date = new Date();
-
 class Calender extends React.Component {
     constructor() {
         super()
@@ -15,7 +11,6 @@ class Calender extends React.Component {
             selectSlot: undefined
         }
     }
-
     componentDidMount() {
         var timeStops = this.getTimeStops('00:00', '23:30');
         this.setState({ timeSlots: timeStops })
@@ -24,7 +19,6 @@ class Calender extends React.Component {
         console.warn("slot", slot)
         this.setState({ selectSlot: slot })
     }
-
     timeSlots() {
         const days = [];
         for (let i = 0; i <= this.state.timeSlots.length; i++) {
@@ -54,14 +48,22 @@ class Calender extends React.Component {
         }
         return timeStops;
     }
+    booking()
+    {
+        console.warn("state",this.state.selectSlot)
+        this.props.bookingData(this.state.selectSlot)
+    }
     render() {
+        console.warn("test",this.props.Booking)
         return (
             <div className="App">
-               
                     <Container className="time-slow-size">
                         <Row>{this.timeSlots()}</Row>
                         <ul>
                             <li>
+                                <Button 
+                                onClick={()=>{this.booking()}}>
+                                Book </Button>
                                 <Link to="/confirm">Confirm</Link>
                             </li>
                         </ul>

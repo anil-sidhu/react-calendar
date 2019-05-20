@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Time from './Time';
+import TimeContainer from './containers/TimeContainer';
 import { Container, Col, Row, Dropdown } from 'react-bootstrap';
 const date = new Date();
 
@@ -112,7 +111,7 @@ class Calender extends React.Component {
           </Row>
         </Container>
 
-        {this.state.selectedDay ? <Time />:null}
+        {this.state.selectedDay ? <TimeContainer />:null}
       </div>
     );
   }
