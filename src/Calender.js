@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import TimeContainer from './containers/TimeContainer';
-import { Container, Col, Row, Dropdown } from 'react-bootstrap';
+import { Container, Row, Dropdown } from 'react-bootstrap';
 import Day from './component/Day'
 
 const date = new Date();
@@ -10,43 +9,47 @@ class Calender extends React.Component {
     super()
     this.state = {
       month: ['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'],
-      selectedMonth: 4,
-      selectedMonthNumber: 2019,
+      selectedMonth: 4, //will  be dynamic
+      selectedMonthNumber: 2019, //will  be dynamic
       CalenderDays: undefined,
-      currentYear: '2019',
-      selectYear: '2019',
-      totalDayMonth: 31,
+      currentYear: '2019', //will  be dynamic
+      selectYear: '2019', //will  be dynamic
+      totalDayMonth: 31, //will  be dynamic
       selectedDay: undefined,
-      selectedDetails: undefined,
-      styleAct:""
+      selectedMnY: undefined,
+      activeComponent: ""
     }
   }
 
   activeDay(item) {
-    console.warn("hello",item)
-    this.setState({ styleAct: item })
+    this.setState({ activeComponent: item })
   }
   days(totalDayMonth) {
     const days = [];
     for (let i = 1; i <= totalDayMonth; i++) {
       days.push(
-        // <Col 
-          // onClick={() => { this.selectDay(i) }}
-          // className={this.state.selectedDay == i ? "activeDays day" : 'day'}
-          // sm={1}>
-          <Day styleAct={this.state.styleAct==i?"activeDays" :""}  activeDay={this.activeDay.bind(this)} onClick={()=>alert("test")} key={i} date={i}  />
-         
+        <Day
+          activeComponent={this.state.activeComponent == i ? "activeComponent" : ""}
+          activeDay={this.activeDay.bind(this)}
+          key={i}
+          date={i}
+          selectedMnY={
+            {
+              month: this.state.selectedMonth,
+              year: this.state.selectYear
+            }
+          }
+        />
       );
     }
     return days;
   }
-  selectDay(item) {
+  selectDay() {
     let data = {
-      day: item,
       month: this.state.selectedMonth,
       year: this.state.selectYear
     }
-    this.setState({ selectedDay: item, selectedDetails: data })
+    this.setState({selectedMnY: data })
   }
   componentDidMount() {
     this.setState(
@@ -122,8 +125,6 @@ class Calender extends React.Component {
             {this.days(this.state.totalDayMonth)}
           </Row>
         </Container>
-
-        {/* {this.state.selectedDay ? <TimeContainer data={this.state.selectedDetails} /> : null} */}
       </div>
     );
   }

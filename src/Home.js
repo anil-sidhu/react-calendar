@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Col, Row, Dropdown, Button, Jumbotron } from 'react-bootstrap';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { Container, Button, Jumbotron } from 'react-bootstrap';
+import { withRouter } from "react-router-dom";
 class Home extends React.Component {
     constructor() {
         super()

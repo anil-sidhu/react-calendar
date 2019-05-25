@@ -1,8 +1,6 @@
 import React from 'react';
-import moment from 'moment'
-import { Container, Col, Row, Dropdown, Button, Table, Jumbotron } from 'react-bootstrap';
-import { BrowserRouter as Router, withRouter, Route, Link } from "react-router-dom";
-const date = new Date();
+import { Container, Button, Table, Jumbotron } from 'react-bootstrap';
+import { withRouter } from "react-router-dom";
 class Appointments extends React.Component {
     constructor() {
         super()
@@ -16,6 +14,7 @@ class Appointments extends React.Component {
     getSnapshotBeforeUpdate(prevProps, prevState) {
         if (prevProps.bookingData != this.props.bookingData) {
             let oldData = JSON.parse(localStorage.getItem("ApStorage"));
+            console.warn("oldData", oldData)
             let ApStorage = oldData ? oldData : []
             ApStorage.push(this.props.bookingData);
             localStorage.setItem('ApStorage', JSON.stringify(ApStorage))
@@ -38,6 +37,7 @@ class Appointments extends React.Component {
                                 <th>Time</th>
                                 <th>Date</th>
                                 <th>Dr Name</th>
+                                <th>Title</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>
@@ -45,14 +45,15 @@ class Appointments extends React.Component {
                     {
                         this.state.bookingCollection ?
                             this.state.bookingCollection.map(function (item, i) {
-                                return <Table striped bordered hover>
+                                return <Table key={i} striped bordered hover>
                                     <tbody>
                                         <tr>
                                             <td>{i}</td>
                                             <td>Bruce</td>
-                                            <td>{item.time}</td>
-                                            <td>{item.day},{item.year}</td>
+                                            <td>{item.timeSlot}</td>
+                                            <td>{item.month},{item.year}</td>
                                             <td>Dr Strange</td>
+                                            <td>{item.title}</td>
                                             <th> <Button variant="outline-danger">Cancel</Button></th>
                                         </tr>
                                     </tbody>

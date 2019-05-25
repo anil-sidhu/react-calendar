@@ -1,10 +1,8 @@
 import React from 'react'
-import { Container, Col, Row, Dropdown } from 'react-bootstrap';
+import ActiveComponentContainer from '../containers/ActiveComponentContainer';
 
-class Day extends React.Component{
-
-    constructor()
-    {
+class Day extends React.Component {
+    constructor() {
         super()
         this.state = {
             month: ['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'],
@@ -16,40 +14,46 @@ class Day extends React.Component{
             totalDayMonth: 31,
             selectedDay: undefined,
             selectedDetails: undefined,
-            activeDays:""
-          }
-    }
-    componentDidMount()
-    {
-        console.warn(this.props.styleAct)
+            activeDays: "",
+            activeComponent: false
+        }
     }
     selectDay(item) {
         this.props.activeDay(item)
-        // console.warn(item)
-    //     let data = {
-    //       day: item,
-    //       month: this.state.selectedMonth,
-    //       year: this.state.selectYear
-    //     }
-    //     this.setState({ selectedDay: item, selectedDetails: data })
-      }
-      getSnapshotBeforeUpdate(prevProps, prevState) {
-        console.warn("test here",this.props.styleAct)
-        if (prevProps!= this.props) {
-           this.setState({activeDays:this.props.styleAct})
+    }
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        if (prevProps != this.props && prevProps != this.props.activeComponent) {
+            // console.warn("test here", this.props.date)
+            this.setState({ activeDays: this.props.activeComponent != "" ? "activeDays" : "" })
             return true
         }
         else { return false }
     }
+    applyActiveComponent() {
+        this.setState({ activeComponent: true })
+    }
 
-    render()
-    {
+    render() {
         return (
-            <div 
-          className="day"
-          className={this.state.activeDays + ' day'}
-          onClick={() => { this.selectDay(this.props.date) }}
-            >{this.props.date}</div>
+            <div
+                className="day"
+                className={this.state.activeDays + ' day'}
+                onClick={() => {
+                    this.selectDay(this.props.date)
+                }}
+            >
+                {
+                    this.props.activeComponent != "" ?
+                        <div>
+                            <ActiveComponentContainer monthAndYear={this.props.selectedMnY} />
+                        </div> : <div>
+                            <a onClick={() => { this.applyActiveComponent() }} className="edit-a" href="#">
+                                <span className="glyphicon glyphicon-pencil"></span>
+                                <span className="days-date">{this.props.date}</span>
+                            </a>
+                        </div>
+                }
+            </div>
         )
     }
 }

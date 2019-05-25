@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { profile } from '../actions/index'
 import Appointments from '../component/Appointments'
  
 const mapStateToProps = state => ({

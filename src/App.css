@@ -33,16 +33,14 @@
 .size{
   width: 1000px;
 }
-.time-slow-size{
-  width: 400px;
-}
 .apointment-size{
   width: 600px;
 }
 .select-month{
-  background-color: #1c418a;
-  border: 1px solid #fff;
+  background-color: #7a7a7a;
+  border: 1px solid #7a7a7a;
   color: #fff;
+  font-size: 25px;
 }
 .month-rigth{
     position: relative;
@@ -50,16 +48,66 @@
 }
 .current-month{
   text-transform: capitalize;
-    width: 64%;
-    background: #1d418a;
+    width: 83.5%;
+    background: #7a7a7a;
+    color: #fff;
+    font-size: 26px;
 }
 .activeDays {
-  background-color: #436fc7;
+  background-color: #c1c3c7;
   color: #211010;
 }
 .active-slot{
   background-color: #59a713;
   color: #211010;
+}
+.activeDays textarea{
+  width: 90%;
+  height: 80px;
+  border: 0;
+  margin-top: 0px;
+  max-height: 80px;
+  margin-bottom: 10px;
+}
+.time  .dropdown .btn{
+  background-color: #c1c3c7;
+  border: none;
+  color: #fbfafa;
+  text-transform: capitalize;
+  padding: 0px;
+  margin-bottom: 5px;
+  margin-top:5px;
+}
+.edit-a{
+  color: #fff;
+  margin-top: 10px;
+  display: block
+}
+.edit-a:hover{
+  color: #ccc
+}
+.days-date{
+  margin-left: 10px;
+}
+.book-btn{
+  background-color: #c1c3c7;
+    border-color: #ffffff;
+    color: #fff;
+    padding: 2px 28px;
+}
+.slot-wrapper .dropdown-item{
+  margin: 12px;
+    display: block;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    width: auto;
+}
+.slot-wrapper{
+  width: 400px
 }
 @keyframes App-logo-spin {
   from {
