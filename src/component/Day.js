@@ -23,7 +23,6 @@ class Day extends React.Component {
     }
     getSnapshotBeforeUpdate(prevProps, prevState) {
         if (prevProps != this.props && prevProps != this.props.activeComponent) {
-            // console.warn("test here", this.props.date)
             this.setState({ activeDays: this.props.activeComponent != "" ? "activeDays" : "" })
             return true
         }

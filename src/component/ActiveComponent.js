@@ -16,7 +16,6 @@ class ActiveComponent extends React.Component {
         }
     }
     getTimefromChild(timeSlow) {
-        console.warn("getTimefromChild", timeSlow)
         this.setState({ timeSlot: timeSlow })
     }
     async booking() {
@@ -29,7 +28,6 @@ class ActiveComponent extends React.Component {
         }
         await this.setState({ bookCollection: bookingData })
         this.props.bookingData(this.state.bookCollection)
-        console.warn("bookingData", this.state.bookCollection,this.props.monthAndYear)
         this.props.history.push('/Appointments')
     }
     render() {

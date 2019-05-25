@@ -18,7 +18,6 @@ class Calender extends React.Component {
     }
     selectTime(slot) {
         this.setState({ selectSlot: slot })
-        console.warn("slot", slot)
         this.props.getTime(slot)
     }
     timeSlots() {
