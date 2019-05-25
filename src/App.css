@@ -23,13 +23,15 @@
   color: #61dafb;
 }
 .day{
-  background-color: #282c34;
-  border: 1px solid #fff;
+  background-color: #7b7b7b;
+  border: 1px solid #2d2a2a;
   color: #fff;
   cursor: pointer;
+  height: 150px;
+  flex: 0 0 15.333333%;
 }
 .size{
-  width: 200px;
+  width: 1000px;
 }
 .time-slow-size{
   width: 400px;

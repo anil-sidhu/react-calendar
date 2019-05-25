@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import TimeContainer from './containers/TimeContainer';
 import { Container, Col, Row, Dropdown } from 'react-bootstrap';
-const date = new Date();
+import Day from './component/Day'
 
+const date = new Date();
 class Calender extends React.Component {
   constructor() {
     super()
@@ -17,16 +18,24 @@ class Calender extends React.Component {
       totalDayMonth: 31,
       selectedDay: undefined,
       selectedDetails: undefined,
+      styleAct:""
     }
+  }
+
+  activeDay(item) {
+    console.warn("hello",item)
+    this.setState({ styleAct: item })
   }
   days(totalDayMonth) {
     const days = [];
     for (let i = 1; i <= totalDayMonth; i++) {
       days.push(
-        <Col key={i}
-          onClick={() => { this.selectDay(i) }}
-          className={this.state.selectedDay == i ? "activeDays day" : 'day'}
-          sm={1}>{i}</Col>
+        // <Col 
+          // onClick={() => { this.selectDay(i) }}
+          // className={this.state.selectedDay == i ? "activeDays day" : 'day'}
+          // sm={1}>
+          <Day styleAct={this.state.styleAct==i?"activeDays" :""}  activeDay={this.activeDay.bind(this)} onClick={()=>alert("test")} key={i} date={i}  />
+         
       );
     }
     return days;
@@ -114,7 +123,7 @@ class Calender extends React.Component {
           </Row>
         </Container>
 
-        {this.state.selectedDay ? <TimeContainer data={this.state.selectedDetails} /> : null}
+        {/* {this.state.selectedDay ? <TimeContainer data={this.state.selectedDetails} /> : null} */}
       </div>
     );
   }
